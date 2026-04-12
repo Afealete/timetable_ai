@@ -1,0 +1,8 @@
+course,lecturer,group,students,capacity,room
+CS101,Dr. Smith,CS200,25,30,Lab1
+CS102,Dr. Johnson,CS200,22,30,Lab2
+MATH101,Dr. Smith,MATH100,28,35,HallA
+MATH102,Dr. Johnson,MATH100,30,35,HallB
+PHYS101,Prof. Brown,PHYS100,20,25,Lab3
+PHYS102,Prof. Brown,PHYS100,18,25,Lab4</content>
+<parameter name="filePath">c:\Users\EMMANUEL\projects\timetable_ai\small_optimal_sample.csv

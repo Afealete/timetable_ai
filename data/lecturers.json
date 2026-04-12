@@ -1,0 +1,12 @@
+[
+  { 
+    "id": "L1", 
+    "name": "Dr A",
+    "unavailable_slots": ["T1"]
+  },
+  { 
+    "id": "L2", 
+    "name": "Dr B",
+    "unavailable_slots": ["T3"]
+  }
+]

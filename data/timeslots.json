@@ -1,0 +1,5 @@
+[
+  { "id": "T1", "day": "Monday", "time": "8-10" },
+  { "id": "T2", "day": "Monday", "time": "10-12" },
+  { "id": "T3", "day": "Tuesday", "time": "8-10" }
+]

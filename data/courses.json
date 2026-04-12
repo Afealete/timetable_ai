@@ -1,0 +1,23 @@
+[
+  {
+    "id": "CE101",
+    "name": "Intro to Programming",
+    "lecturer_id": "L1",
+    "students": 100,
+    "group": "CE200"
+  },
+  {
+    "id": "CE102",
+    "name": "Data Structures",
+    "lecturer_id": "L1",
+    "students": 80,
+    "group": "CE200"
+  },
+  {
+    "id": "CE103",
+    "name": "Discrete Math",
+    "lecturer_id": "L2",
+    "students": 60,
+    "group": "CE100"
+  }
+]
