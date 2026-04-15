@@ -1,0 +1,17 @@
+course,lecturer,group,students,capacity,room
+CS101,Dr. Smith,CS-A,45,50,Lab1
+CS101,Dr. Smith,CS-B,42,50,Lab2
+CS102,Prof. Johnson,CS-A,45,50,Hall1
+CS102,Prof. Johnson,CS-B,42,50,Hall2
+MATH201,Dr. Williams,MATH-A,38,40,Room101
+MATH201,Dr. Williams,MATH-B,35,40,Room102
+MATH202,Prof. Brown,MATH-A,38,40,Room103
+MATH202,Prof. Brown,MATH-B,35,40,Room104
+ENG301,Mrs. Davis,ENG-A,50,50,Hall3
+ENG301,Mrs. Davis,ENG-B,48,50,Hall4
+PHYS401,Dr. Anderson,PHYS-A,32,35,Lab3
+PHYS401,Dr. Anderson,PHYS-B,30,35,Lab4
+BIO501,Prof. Thomas,BIO-A,28,30,Lab5
+BIO501,Prof. Thomas,BIO-B,26,30,Lab6
+CHEM601,Dr. Moore,CHEM-A,38,40,Lab7
+CHEM601,Dr. Moore,CHEM-B,36,40,Lab8

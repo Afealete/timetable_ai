@@ -27,3 +27,17 @@ class Course(db.Model):
 
     lecturer = db.relationship('Lecturer', backref=db.backref('courses', lazy=True))
     room = db.relationship('Room', backref=db.backref('courses', lazy=True))
+
+class ExamPeriod(db.Model):
+    id = db.Column(db.String(10), primary_key=True)
+    day = db.Column(db.String(20), nullable=False)
+    time = db.Column(db.String(20), nullable=False)
+    duration = db.Column(db.Integer, nullable=False)  # in minutes
+
+class Exam(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
+    duration = db.Column(db.Integer, nullable=False)  # in minutes
+    required_room_type = db.Column(db.String(50))  # e.g., 'exam_hall', 'lab'
+
+    course = db.relationship('Course', backref=db.backref('exams', lazy=True))

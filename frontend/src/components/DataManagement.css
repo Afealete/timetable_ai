@@ -1,0 +1,194 @@
+.data-management {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.dm-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+.dm-tab-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.dm-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.dm-tab-button {
+  border: 1px solid #d1d5db;
+  background: #f3f4f6;
+  color: #1f2937;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dm-tab-button:hover,
+.dm-tab-button:focus-visible {
+  background: #e5e7eb;
+  outline: none;
+}
+
+.dm-tab-button.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.dm-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.dm-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.dm-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: #111827;
+}
+
+.dm-form {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dm-form-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.dm-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.dm-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  color: #111827;
+  background: #f8fafc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dm-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  background: #ffffff;
+}
+
+.dm-button {
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.dm-button:hover {
+  transform: translateY(-1px);
+}
+
+.dm-submit-button {
+  background: #2563eb;
+  color: white;
+}
+
+.dm-submit-button:hover {
+  background: #1d4ed8;
+}
+
+.dm-delete-button {
+  background: #ef4444;
+  color: white;
+}
+
+.dm-delete-button:hover {
+  background: #dc2626;
+}
+
+.dm-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.dm-list-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  border-radius: 0.85rem;
+  padding: 1rem 1.15rem;
+}
+
+.dm-course-item {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.dm-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dm-course-details {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .data-management {
+    padding: 1.25rem 0.75rem 2rem;
+  }
+
+  .dm-tab-list {
+    gap: 0.5rem;
+  }
+
+  .dm-tab-button {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .dm-card {
+    padding: 1.25rem;
+  }
+
+  .dm-row-between {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

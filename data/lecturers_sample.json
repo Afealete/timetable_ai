@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Smith",
+    "unavailable_slots": []
+  },
+  {
+    "id": 2,
+    "name": "Prof. Johnson",
+    "unavailable_slots": []
+  },
+  {
+    "id": 3,
+    "name": "Dr. Williams",
+    "unavailable_slots": []
+  },
+  {
+    "id": 4,
+    "name": "Prof. Brown",
+    "unavailable_slots": []
+  },
+  {
+    "id": 5,
+    "name": "Mrs. Davis",
+    "unavailable_slots": []
+  },
+  {
+    "id": 6,
+    "name": "Dr. Anderson",
+    "unavailable_slots": []
+  },
+  {
+    "id": 7,
+    "name": "Prof. Thomas",
+    "unavailable_slots": []
+  },
+  {
+    "id": 8,
+    "name": "Dr. Moore",
+    "unavailable_slots": []
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "T1",
+    "day": "Monday",
+    "time": "8-9"
+  },
+  {
+    "id": "T2",
+    "day": "Monday",
+    "time": "9-10"
+  },
+  {
+    "id": "T3",
+    "day": "Monday",
+    "time": "10-11"
+  },
+  {
+    "id": "T4",
+    "day": "Monday",
+    "time": "11-12"
+  },
+  {
+    "id": "T5",
+    "day": "Monday",
+    "time": "13-14"
+  },
+  {
+    "id": "T6",
+    "day": "Monday",
+    "time": "14-15"
+  },
+  {
+    "id": "T7",
+    "day": "Tuesday",
+    "time": "8-9"
+  },
+  {
+    "id": "T8",
+    "day": "Tuesday",
+    "time": "9-10"
+  },
+  {
+    "id": "T9",
+    "day": "Tuesday",
+    "time": "10-11"
+  },
+  {
+    "id": "T10",
+    "day": "Tuesday",
+    "time": "11-12"
+  },
+  {
+    "id": "T11",
+    "day": "Tuesday",
+    "time": "13-14"
+  },
+  {
+    "id": "T12",
+    "day": "Tuesday",
+    "time": "14-15"
+  },
+  {
+    "id": "T13",
+    "day": "Wednesday",
+    "time": "8-9"
+  },
+  {
+    "id": "T14",
+    "day": "Wednesday",
+    "time": "9-10"
+  },
+  {
+    "id": "T15",
+    "day": "Wednesday",
+    "time": "10-11"
+  },
+  {
+    "id": "T16",
+    "day": "Wednesday",
+    "time": "11-12"
+  },
+  {
+    "id": "T17",
+    "day": "Wednesday",
+    "time": "13-14"
+  },
+  {
+    "id": "T18",
+    "day": "Wednesday",
+    "time": "14-15"
+  },
+  {
+    "id": "T19",
+    "day": "Thursday",
+    "time": "8-9"
+  },
+  {
+    "id": "T20",
+    "day": "Thursday",
+    "time": "9-10"
+  },
+  {
+    "id": "T21",
+    "day": "Thursday",
+    "time": "10-11"
+  },
+  {
+    "id": "T22",
+    "day": "Thursday",
+    "time": "11-12"
+  },
+  {
+    "id": "T23",
+    "day": "Thursday",
+    "time": "13-14"
+  },
+  {
+    "id": "T24",
+    "day": "Thursday",
+    "time": "14-15"
+  },
+  {
+    "id": "T25",
+    "day": "Friday",
+    "time": "8-9"
+  },
+  {
+    "id": "T26",
+    "day": "Friday",
+    "time": "9-10"
+  },
+  {
+    "id": "T27",
+    "day": "Friday",
+    "time": "10-11"
+  },
+  {
+    "id": "T28",
+    "day": "Friday",
+    "time": "11-12"
+  },
+  {
+    "id": "T29",
+    "day": "Friday",
+    "time": "13-14"
+  },
+  {
+    "id": "T30",
+    "day": "Friday",
+    "time": "14-15"
+  }
+]

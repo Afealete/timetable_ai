@@ -9,6 +9,7 @@ export default function Dashboard() {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [useDatabase, setUseDatabase] = useState(false);
+  const [timetableType, setTimetableType] = useState<"course" | "exam">("course");
 
   const generate = async () => {
     if (!useDatabase && (!path || path.trim() === "")) {
@@ -21,7 +22,8 @@ export default function Dashboard() {
     try {
       const res = await API.post("/timetable/generate", {
         path: useDatabase ? null : path,
-        use_database: useDatabase
+        use_database: useDatabase,
+        type: timetableType
       });
 
       let responseData = res.data;
@@ -87,9 +89,29 @@ export default function Dashboard() {
         <div className="generate-section">
           <div className="section-header">
             <h2>Generate Timetable</h2>
-            <p>Click the button below to generate an optimized timetable using AI</p>
+            <p>Select timetable type and click the button below to generate an optimized timetable using AI</p>
           </div>
           <div className="generate-card">
+            <div className="timetable-type-selector">
+              <label className="type-label">
+                <input
+                  type="radio"
+                  value="course"
+                  checked={timetableType === "course"}
+                  onChange={(e) => setTimetableType(e.target.value as "course" | "exam")}
+                />
+                Course Timetable
+              </label>
+              <label className="type-label">
+                <input
+                  type="radio"
+                  value="exam"
+                  checked={timetableType === "exam"}
+                  onChange={(e) => setTimetableType(e.target.value as "course" | "exam")}
+                />
+                Exam Timetable
+              </label>
+            </div>
             <button
               onClick={generate}
               disabled={loading || (!useDatabase && !path)}

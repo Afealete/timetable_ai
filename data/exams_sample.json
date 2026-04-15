@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "course": "CS101",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  },
+  {
+    "id": 2,
+    "course": "CS102",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  },
+  {
+    "id": 3,
+    "course": "MATH201",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  },
+  {
+    "id": 4,
+    "course": "MATH202",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  },
+  {
+    "id": 5,
+    "course": "ENG301",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  },
+  {
+    "id": 6,
+    "course": "PHYS401",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  },
+  {
+    "id": 7,
+    "course": "BIO501",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  },
+  {
+    "id": 8,
+    "course": "CHEM601",
+    "duration": 120,
+    "required_room_type": "exam_hall"
+  }
+]

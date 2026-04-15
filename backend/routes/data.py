@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models import db, Lecturer, Room, Timeslot, Course
+from models import db, Lecturer, Room, Timeslot, Course, ExamPeriod, Exam
 import json
 
 data_bp = Blueprint("data", __name__)
@@ -156,3 +156,80 @@ def delete_course(id):
     db.session.delete(course)
     db.session.commit()
     return jsonify({"message": "Course deleted"})
+
+# ExamPeriod CRUD
+@data_bp.route("/exam-periods", methods=["GET"])
+def get_exam_periods():
+    exam_periods = ExamPeriod.query.all()
+    return jsonify([{"id": ep.id, "day": ep.day, "time": ep.time, "duration": ep.duration} for ep in exam_periods])
+
+@data_bp.route("/exam-periods", methods=["POST"])
+def add_exam_period():
+    data = request.json
+    exam_period = ExamPeriod(id=data['id'], day=data['day'], time=data['time'], duration=data['duration'])
+    db.session.add(exam_period)
+    db.session.commit()
+    return jsonify({"message": "Exam period added"}), 201
+
+@data_bp.route("/exam-periods/<string:id>", methods=["PUT"])
+def update_exam_period(id):
+    exam_period = ExamPeriod.query.get_or_404(id)
+    data = request.json
+    exam_period.day = data['day']
+    exam_period.time = data['time']
+    exam_period.duration = data['duration']
+    db.session.commit()
+    return jsonify({"message": "Exam period updated"})
+
+@data_bp.route("/exam-periods/<string:id>", methods=["DELETE"])
+def delete_exam_period(id):
+    exam_period = ExamPeriod.query.get_or_404(id)
+    db.session.delete(exam_period)
+    db.session.commit()
+    return jsonify({"message": "Exam period deleted"})
+
+# Exam CRUD
+@data_bp.route("/exams", methods=["GET"])
+def get_exams():
+    exams = Exam.query.all()
+    return jsonify([{
+        "id": e.id,
+        "course": e.course.name,
+        "duration": e.duration,
+        "required_room_type": e.required_room_type
+    } for e in exams])
+
+@data_bp.route("/exams", methods=["POST"])
+def add_exam():
+    data = request.json
+    course = Course.query.filter_by(name=data['course']).first()
+    if not course:
+        return jsonify({"error": "Course not found"}), 400
+    exam = Exam(
+        course_id=course.id,
+        duration=data['duration'],
+        required_room_type=data.get('required_room_type')
+    )
+    db.session.add(exam)
+    db.session.commit()
+    return jsonify({"id": exam.id, "message": "Exam added"}), 201
+
+@data_bp.route("/exams/<int:id>", methods=["PUT"])
+def update_exam(id):
+    exam = Exam.query.get_or_404(id)
+    data = request.json
+    course = Course.query.filter_by(name=data['course']).first()
+    if not course:
+        return jsonify({"error": "Course not found"}), 400
+    exam.course_id = course.id
+    exam.duration = data['duration']
+    exam.required_room_type = data.get('required_room_type')
+    db.session.commit()
+    return jsonify({"message": "Exam updated"})
+
+@data_bp.route("/exams/<int:id>", methods=["DELETE"])
+def delete_exam(id):
+    exam = Exam.query.get_or_404(id)
+    db.session.delete(exam)
+    db.session.commit()
+    return jsonify({"message": "Exam deleted"})

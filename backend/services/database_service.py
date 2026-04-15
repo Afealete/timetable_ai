@@ -1,4 +1,4 @@
-from models import Lecturer, Room, Timeslot, Course
+from models import Lecturer, Room, Timeslot, Course, ExamPeriod, Exam
 import pandas as pd
 import json
 
@@ -14,6 +14,10 @@ def get_timeslots_data():
     timeslots = Timeslot.query.all()
     return [{"id": t.id, "day": t.day, "time": t.time} for t in timeslots]
 
+def get_exam_periods_data():
+    exam_periods = ExamPeriod.query.all()
+    return [{"id": ep.id, "day": ep.day, "time": ep.time, "duration": ep.duration} for ep in exam_periods]
+
 def get_courses_dataframe():
     courses = Course.query.all()
     data = []
@@ -25,5 +29,19 @@ def get_courses_dataframe():
             "students": c.students,
             "capacity": c.capacity,
             "room": c.room.id if c.room else None
+        })
+    return pd.DataFrame(data)
+
+def get_exams_dataframe():
+    exams = Exam.query.all()
+    data = []
+    for e in exams:
+        data.append({
+            "course": e.course.name,
+            "lecturer": e.course.lecturer.name,
+            "group": e.course.group,
+            "students": e.course.students,
+            "duration": e.duration,
+            "required_room_type": e.required_room_type
         })
     return pd.DataFrame(data)
