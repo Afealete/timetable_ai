@@ -51,6 +51,7 @@ export default function DataManagement() {
   const [examPeriods, setExamPeriods] = useState<ExamPeriod[]>([]);
   const [exams, setExams] = useState<Exam[]>([]);
   const [activeTab, setActiveTab] = useState("lecturers");
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadData();
@@ -96,7 +97,7 @@ export default function DataManagement() {
       </div>
 
       {activeTab === "lecturers" && (
-        <LecturerManager lecturers={lecturers} onUpdate={loadData} />
+        <LecturerManager lecturers={lecturers} onUpdate={loadData} error={error} setError={setError} />
       )}
       {activeTab === "rooms" && (
         <RoomManager rooms={rooms} onUpdate={loadData} />
@@ -117,11 +118,12 @@ export default function DataManagement() {
   );
 }
 
-function LecturerManager({ lecturers, onUpdate }: { lecturers: Lecturer[], onUpdate: () => void }) {
+function LecturerManager({ lecturers, onUpdate, error, setError }: { lecturers: Lecturer[], onUpdate: () => void, error: string | null, setError: (error: string | null) => void }) {
   const [form, setForm] = useState({ name: "", unavailable_slots: [] as string[] });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Adding lecturer", form);
     try {
       await API.post("/data/lecturers", form);
       setForm({ name: "", unavailable_slots: [] });
@@ -132,11 +134,18 @@ function LecturerManager({ lecturers, onUpdate }: { lecturers: Lecturer[], onUpd
   };
 
   const handleDelete = async (id: number) => {
+    console.log("Deleting lecturer", id);
     try {
       await API.delete(`/data/lecturers/${id}`);
       onUpdate();
-    } catch (error) {
+      setError(null);
+    } catch (error: any) {
       console.error("Error deleting lecturer:", error);
+      if (error.response && error.response.data && error.response.data.error) {
+        setError(error.response.data.error);
+      } else {
+        setError("Failed to delete lecturer");
+      }
     }
   };
 
@@ -160,6 +169,8 @@ function LecturerManager({ lecturers, onUpdate }: { lecturers: Lecturer[], onUpd
           Add Lecturer
         </button>
       </form>
+
+      {error && <div className="dm-error">{error}</div>}
 
       <div className="dm-list">
         {lecturers.map(lect => (

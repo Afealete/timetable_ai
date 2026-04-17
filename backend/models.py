@@ -25,7 +25,7 @@ class Course(db.Model):
     capacity = db.Column(db.Integer, nullable=False)
     room_id = db.Column(db.String(10), db.ForeignKey('room.id'))
 
-    lecturer = db.relationship('Lecturer', backref=db.backref('courses', lazy=True))
+    lecturer = db.relationship('Lecturer', backref=db.backref('courses', lazy=True, cascade='all, delete-orphan'))
     room = db.relationship('Room', backref=db.backref('courses', lazy=True))
 
 class ExamPeriod(db.Model):

@@ -8,6 +8,7 @@ export default function Dashboard() {
   const [path, setPath] = useState<string>("");
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [useDatabase, setUseDatabase] = useState(false);
   const [timetableType, setTimetableType] = useState<"course" | "exam">("course");
 
@@ -18,6 +19,15 @@ export default function Dashboard() {
     }
 
     setLoading(true);
+    setProgress(10);
+
+    // Simulate progress increments while waiting for response
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 90) return prev + Math.random() * 15;
+        return prev;
+      });
+    }, 300);
 
     try {
       const res = await API.post("/timetable/generate", {
@@ -25,6 +35,8 @@ export default function Dashboard() {
         use_database: useDatabase,
         type: timetableType
       });
+
+      setProgress(95);
 
       let responseData = res.data;
       if (typeof res.data === 'string') {
@@ -44,15 +56,20 @@ export default function Dashboard() {
 
       if (responseData.timetable) {
         setData(responseData.timetable);
+        setProgress(100);
       } else {
         alert("Generation failed: No timetable data received");
       }
     } catch (err) {
       console.error("Generation error:", err);
       alert("Generation failed: " + ((err as any).response?.data?.error || (err as any).message));
+    } finally {
+      clearInterval(progressInterval);
+      setTimeout(() => {
+        setLoading(false);
+        setProgress(0);
+      }, 500);
     }
-
-    setLoading(false);
   };
 
   return (
@@ -124,7 +141,7 @@ export default function Dashboard() {
                       <animate attributeName="stroke-dashoffset" dur="1s" values="31.416;0" repeatCount="indefinite"/>
                     </circle>
                   </svg>
-                  Generating...
+                  Generating... ({progress}%)
                 </>
               ) : (
                 <>
@@ -135,6 +152,11 @@ export default function Dashboard() {
                 </>
               )}
             </button>
+            {loading && (
+              <div className="progress-bar-container">
+                <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+              </div>
+            )}
             {(!useDatabase && !path) && (
               <p className="generate-hint">Please upload a file first or switch to database mode</p>
             )}
@@ -149,7 +171,7 @@ export default function Dashboard() {
             </div>
             <div className="results-card">
               <div className="results-actions">
-                <ExportButton data={data} />
+                <ExportButton data={data} timetableType={timetableType} />
                 <div className="results-stats">
                   <span className="stat">
                     <strong>{data.length}</strong> scheduled classes
@@ -157,7 +179,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <div className="timetable-container">
-                <TimetableGrid data={data} />
+                <TimetableGrid data={data} timetableType={timetableType} />
               </div>
             </div>
           </div>
